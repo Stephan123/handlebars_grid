@@ -1,23 +1,36 @@
 # README
 
-Simple Paging Grid is a lightweight CSS friendly readonly grid that supports both preloaded and dynamically loaded data and is designed to work with the Bootstrap <http://getbootstrap.com/> library. With the adoption of Bootstrap as the default template for ASP.Net and MVC applications in Visual Studio 2013 Simple Paging Grid now supports rapid prototyping within that environment straight out the box - just add the NuGet package and go.
+Simple Paging Grid is a lightweight CSS friendly readonly grid that supports both preloaded and
+dynamically loaded data and is designed to work with the Bootstrap <http://getbootstrap.com/> library.
+With the adoption of Bootstrap as the default template for ASP.Net and MVC applications in Visual Studio 2013 Simple Paging Grid now supports
+rapid prototyping within that environment straight out the box - just add the NuGet package and go.
 
-This latest version of the grid incorporates much of the feedback that has been given to me on GitHub and for which I am really grateful. Time pressures meant it took me a while to get this out but I'm still committed to supporting Simple Paging Grid - I use it myself extensively.
+This latest version of the grid incorporates much of the feedback that has been given to me
+on GitHub and for which I am really grateful. Time pressures meant it took me a while to get
+this out but I'm still committed to supporting Simple Paging Grid - I use it myself extensively.
 
-*Please note that Simple Paging Grid by default uses Bootstrap 3. To continue to use Bootstrap 2 set the bootstrapVersion property to 2 (an example is provided in the examples folder). Also the grid now has back and forward browser button (history) support enabled by default - set urlUpdatingEnabled to false to disable this.*
+*Please note that Simple Paging Grid by default uses Bootstrap 3. To continue to use Bootstrap 2 set the bootstrapVersion property
+to 2 (an example is provided in the examples folder). Also the grid now has back and forward browser button (history)
+support enabled by default - set urlUpdatingEnabled to false to disable this.*
 
 ![Screenshot]
 (http://www.accidentalfish.com/simple-paging-grid-screenshot.png)
 
-It's built as a jQuery plugin and has been developed and tested against version 1.7.1 and higher. The latest version also uses Handlebars to provide custom templating. These and the accompanying licenses can be found at:
+It's built as a jQuery plugin and has been developed and tested against version 1.7.1 and higher.
+The latest version also uses Handlebars to provide custom templating. These and the accompanying licenses can be found at:
 
 <http://jquery.com/>
 
 <https://github.com/wycats/handlebars.js/blob/master/LICENSE>
 
-I generally make changes in a development branches before moving to master so if you want to take advantage of the latest fixes and features before general release you can grab the code from their. I do keep the documentation current in that branch I just generally haven't tested it to a point where I'm ready to push into master and release via NuGet. The branch is at <https://github.com/JamesRandall/Simple-Paging-Grid/tree/development>
+I generally make changes in a development branches before moving to master so if you want to take advantage of the latest fixes
+and features before general release you can grab the code from their. I do keep the documentation current in that branch
+I just generally haven't tested it to a point where I'm ready to push into master and release via NuGet.
+The branch is at <https://github.com/JamesRandall/Simple-Paging-Grid/tree/development>
 
-The Simple Paging Grid is covered by the MIT license (see the bottom of this readme and also the LICENSE file) so you can largely use it as you like in both commercial and non-commercial projects. Though if you do use it please consider dropping me an email with feedback: it's always nice to know when and where your code is in use.
+The Simple Paging Grid is covered by the MIT license (see the bottom of this readme and also the LICENSE file) so you can largely
+use it as you like in both commercial and non-commercial projects. Though if you do use it
+please consider dropping me an email with feedback: it's always nice to know when and where your code is in use.
 
 Finally - thanks to the authors of jQuery, Handlebars and Bootstrap all of which are invaluable libraries.
 
@@ -73,7 +86,8 @@ In your document ready event handler configure your grid
         });
     });
 
-The grid will look at your data array and create column headers and keys from the first item. Normally you want a little more sugar and using the columnNames and columnKeys options will let you do that
+The grid will look at your data array and create column headers and keys from the first item.
+Normally you want a little more sugar and using the columnNames and columnKeys options will let you do that
 
     $(document).ready(function() {
         $("#exampleGrid").simplePagingGrid({
@@ -85,7 +99,8 @@ The grid will look at your data array and create column headers and keys from th
         });
     });
 
-For Visual Studio users Simple Paging Grid is also available as a NuGet package (<http://nuget.org/packages/SimplePagingGrid>) which will download the dependencies for you.
+For Visual Studio users Simple Paging Grid is also available as a NuGet package
+(<http://nuget.org/packages/SimplePagingGrid>) which will download the dependencies for you.
 
 
 ## Options
@@ -151,12 +166,14 @@ Example using a data array:
 	var dataArray = [];
 	$("#mygrid").simplePagingGrid("refresh", dataArray);
 	
-When using a data array it is possible to modify the underlying array and call refresh without the parameter, for example assuming sourceArray is the array you first bound the grid to:
+When using a data array it is possible to modify the underlying array and call refresh without the parameter,
+for example assuming sourceArray is the array you first bound the grid to:
 
 	sourceArray.splice(0,1);
 	$("#mygrid").simplePagingGrid("refresh");
 	
-Note that changing binding type is not supported at this time. If you instantiate the grid with a dataUrl then you must continue to use a dataUrl.
+Note that changing binding type is not supported at this time.
+If you instantiate the grid with a dataUrl then you must continue to use a dataUrl.
 
 ### currentPageData
 
@@ -217,9 +234,11 @@ When the data is wrapped within an outer object the grid is able to make use of 
 		totalRows: rows.length
 	}
 	
-You can extend this object model with further data as required by your application and reference this from cell templates. See the section on Cell Templates for further details.
+You can extend this object model with further data as required by your application and reference this
+from cell templates. See the section on Cell Templates for further details.
 
-If you are binding directly to a data array via the data property (as opposed to an array returned from a URL) then this object format is not required to support page numbering.
+If you are binding directly to a data array via the data property
+(as opposed to an array returned from a URL) then this object format is not required to support page numbering.
 
 ## Loading Data From A Client Object
 
@@ -250,7 +269,8 @@ To fetch data dynamically from a web server as a user pages backwards and forwar
         });
     });
 
-The datagrid then passes the zero indexed page number, page size, sort column and sort order to the server using a get request. For example to fetch the second page for the above example the get request will look as follows:
+The datagrid then passes the zero indexed page number, page size, sort column and sort order to the server using a get request.
+For example to fetch the second page for the above example the get request will look as follows:
 
     /Orders?page=1&pageSize=10&sortColumn=Name&sortOrder=asc
 
@@ -261,11 +281,13 @@ In response to this your server should return the JSON data for the page, for ex
         { "Name": "Apples", "Price": 0.30, "Quantity": 6 }
     ]
 
-Note that if building SQL dynamically you should take care to protect from injection attacks and your server should enforce a maximum page size to prevent dangerously large pages of data being requested by an attacker.
+Note that if building SQL dynamically you should take care to protect from injection attacks and your server should enforce a maximum page size to
+prevent dangerously large pages of data being requested by an attacker.
 
 ## Loading Data From A Remote Server Using A Custom Function
 
-If you have an existing server interface that doesn't the data format or interface as described in the above section you can supply a function to the grid component and handle the remote data call yourself. You do this using the dataFunction property as follows:
+If you have an existing server interface that doesn't the data format or interface as described in the above section you can supply
+a function to the grid component and handle the remote data call yourself. You do this using the dataFunction property as follows:
 
     $(document).ready(function() {
         $("#exampleGrid").simplePagingGrid({
@@ -324,11 +346,14 @@ As indicated in the table above you can customize cell output by using Handlebar
         });
     });
 
-If a template is missing as shown by the null in the example above (or instead if the cell template array contains less elements than the number of column keys) then the default behaviour will be used for that cell - you only need to supply templates for those you do want to customise.
+If a template is missing as shown by the null in the example above (or instead if the cell template array contains less elements than the number of column keys)
+then the default behaviour will be used for that cell - you only need to supply templates for those you do want to customise.
 
-If you want to format data within the template (for example to convert a JSON date to a localised human friendly date) then a good way to do this is to register helpers with Handlebars. For more details see the Handlebars documentation here: <http://handlebarsjs.com/>
+If you want to format data within the template (for example to convert a JSON date to a localised human friendly date) then a good way
+to do this is to register helpers with Handlebars. For more details see the Handlebars documentation here: <http://handlebarsjs.com/>
 
-If you are returning the paged object model from the server you can extend this with additional properties and reference this using relative paths from within your cell templates. For example your server may want to return a base URL as below:
+If you are returning the paged object model from the server you can extend this with additional properties and reference
+this using relative paths from within your cell templates. For example your server may want to return a base URL as below:
 
     {
 		currentPage: [
@@ -359,7 +384,8 @@ You can then reference this from within cells as follows:
 
 ## Header Templates
 
-Like cell templates you can customize header cell output by supplying your own HTML - for example maybe you want to include a "Select All" button above a column of check boxes as shown below:
+Like cell templates you can customize header cell output by supplying your own HTML - for example
+maybe you want to include a "Select All" button above a column of check boxes as shown below:
 
     $("#sourcegrid").simplePagingGrid({
         columnNames: ["", "Name", "Age"],
@@ -415,7 +441,8 @@ The default templates can be located near the top of the un-minified source code
 
 As of version 0.6.0.0 the grid integrates with a browesers history on supported browers (it requires history API support).
 
-This is enabled as a default (to turn it off set urlUpdatingEnabled to false) and the standard behavior is to write the settings into the anchor. You can change this behaviour by supplying new URL write and read functions (urlReader and urlWriter).
+This is enabled as a default (to turn it off set urlUpdatingEnabled to false) and the standard behavior is to write the settings into the anchor.
+You can change this behaviour by supplying new URL write and read functions (urlReader and urlWriter).
 
 If you want to support older browsers (and accept certain limitations) then you can supply functions that modify the window.location.hash property.
 
@@ -455,13 +482,17 @@ The grid now defaults to using Bootstrap 3. To continue to use Bootstrap 2 set t
         });
     });
 
-The dataFunction has been updated to use a callback rather than the straight return of data to enable custom Ajax calls to make. It can still be used in pure client models - see the existing dataFunction example.
+The dataFunction has been updated to use a callback rather than the straight return of data to enable custom Ajax calls to make.
+It can still be used in pure client models - see the existing dataFunction example.
 
 ## Breaking Changes 0.3 to 0.4
 
-There have been a number of changes between 0.3 and 0.4 that could cause issues if you are using your own templates. The currentPageTemplate and pageLinkTemplates have been removed and rolled into the buttonBarTemplate to allow for better styling of the overall button bar. Along with this the old CSS classes for page numbers have been replaced with the bootstrap classes.
+There have been a number of changes between 0.3 and 0.4 that could cause issues if you are using your own templates.
+The currentPageTemplate and pageLinkTemplates have been removed and rolled into the buttonBarTemplate to allow for better styling of the overall button bar.
+Along with this the old CSS classes for page numbers have been replaced with the bootstrap classes.
 
-Additionally there was an undocumented template and option called pageOptionsBar in 0.3 which has been removed. The template has been wrapped into the new buttonBarTemplate and the option renamed to showGotoPage
+Additionally there was an undocumented template and option called pageOptionsBar in 0.3 which has been removed.
+The template has been wrapped into the new buttonBarTemplate and the option renamed to showGotoPage
 
 If you're using the grid with no custom styles other than a change to the look and feel then you shoulnd't need to change anything to upgrade.
 
@@ -469,8 +500,12 @@ If you're using the grid with no custom styles other than a change to the look a
 
 Copyright (C) 2013 Accidental Fish Ltd.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
